@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- SPDX-License-Identifier: MIT AND Apache-2.0 -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>proclaim — a public registry for Logos programs</title>
+<meta name="description" content="proclaim is an open-source public registry for Logos programs: find who built what, verify the source, and search by name.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="index.html">proclaim<span class="dot">.</span></a>
+  <nav>
+    <a href="index.html" class="active">Overview</a>
+    <a href="build.html">Build status</a>
+    <a href="https://github.com/goldennftplatform-svg/proclaim" target="_blank" rel="noopener">Source</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <img src="hero.svg" alt="proclaim — a public registry for Logos programs" class="hero-img">
+</section>
+
+<section class="wrap">
+  <div class="notice">
+    <strong>Early-stage, honest status.</strong> The registry is built and published as a
+    downloadable module. It is <em>not</em> deployed to a public testnet yet, and no
+    solution has been submitted to any prize. <a href="build.html">See exactly where the build is →</a>
+  </div>
+
+  <h1>What is proclaim?</h1>
+  <p class="lead">Imagine an app store, but instead of phone apps it lists the small programs
+  that run inside the Logos network. Right now there is no easy way to answer simple
+  questions like <em>“who made this?”</em> or <em>“has anyone checked that the source code
+  matches the thing being run?”</em> proclaim is a public directory that answers them.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="ico">🔎</div>
+      <h3>Find things</h3>
+      <p>Search the catalog by name and see who published each program, when, and what it does.</p>
+    </div>
+    <div class="card">
+      <div class="ico">✅</div>
+      <h3>Check provenance</h3>
+      <p>A source-verification record links a program to the code it claims to come from, so you
+      can catch a mismatch instead of trusting a label.</p>
+    </div>
+    <div class="card">
+      <div class="ico">🧩</div>
+      <h3>Plugs into Logos</h3>
+      <p>Built as a Logos module with a command-line tool, a web API and a JavaScript client —
+      so other apps can use the same directory.</p>
+    </div>
+  </div>
+
+  <h2>What's actually finished</h2>
+  <ul class="checks">
+    <li>Six working operations: register, update, mark verified, look up, search and initialise.</li>
+    <li>A published, signed module you can download and inspect.</li>
+    <li>A public catalog of logos and metadata.</li>
+    <li>Command-line tool, browser view, HTTP API and JavaScript client.</li>
+    <li>Automated tests for the code and a reproducible build pipeline.</li>
+  </ul>
+
+  <h2>What's still to do</h2>
+  <p>Getting a public network deployment, then real developers and users registering their own
+  programs over time. Software can't create that on its own — it needs people. The
+  <a href="https://github.com/goldennftplatform-svg/proclaim-module-starter" target="_blank" rel="noopener">starter template</a>
+  is published so any developer can build an integration.</p>
+
+  <div class="cta">
+    <a class="button" href="build.html">See the technical build status</a>
+    <a class="button ghost" href="https://github.com/goldennftplatform-svg/proclaim" target="_blank" rel="noopener">Browse the source on GitHub</a>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <p>Open source under <strong>MIT and Apache-2.0</strong> (both apply). Built in the open.
+  No testimonials, downloads or adoption figures are claimed here.</p>
+</footer>
+</body>
+</html>

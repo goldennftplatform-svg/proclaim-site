@@ -1,0 +1,20 @@
+<!-- SPDX-License-Identifier: MIT AND Apache-2.0 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" role="img" aria-label="Build status: LP-0023 registry 15 of 28 items; LP-0021 and LP-0001 scaffolding in progress">
+  <defs><linearGradient id="b2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1020"/><stop offset="1" stop-color="#131c36"/></linearGradient></defs>
+  <rect width="1200" height="340" fill="url(#b2)"/>
+  <text x="60" y="66" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="30" font-weight="700" fill="#f8fafc">Where the build actually is</text>
+  <text x="60" y="98" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#94a3b8">Local, verifiable progress — not prize credit, not deployment</text>
+  <g font-family="Segoe UI,Helvetica,Arial,sans-serif">
+    <text x="60" y="140" font-size="18" fill="#e2e8f0">LP-0023  Program Registry</text>
+      <text x="980" y="140" font-size="17" fill="#94a3b8">15 / 28 items</text>
+      <rect x="60" y="152" width="760" height="12" rx="6" fill="#1e293b"/>
+      <rect x="60" y="152" width="410.4" height="12" rx="6" fill="#34d399"/><text x="60" y="204" font-size="18" fill="#e2e8f0">LP-0021  Wallet + Provider SDK</text>
+      <text x="980" y="204" font-size="17" fill="#94a3b8">0 / 32 criteria</text>
+      <rect x="60" y="216" width="760" height="12" rx="6" fill="#1e293b"/>
+      <rect x="60" y="216" width="60.8" height="12" rx="6" fill="#8b5cf6"/><text x="60" y="268" font-size="18" fill="#e2e8f0">LP-0001  NFT + Private Proofs</text>
+      <text x="980" y="268" font-size="17" fill="#94a3b8">0 / 46 criteria</text>
+      <rect x="60" y="280" width="760" height="12" rx="6" fill="#1e293b"/>
+      <rect x="60" y="280" width="38.0" height="12" rx="6" fill="#6ee7ff"/>
+  </g>
+  <text x="60" y="326" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" fill="#64748b">138 passing tests across four local workspaces · E2E CI run #9 still building</text>
+</svg>

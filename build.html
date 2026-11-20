@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- SPDX-License-Identifier: MIT AND Apache-2.0 -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build status — proclaim</title>
+<meta name="description" content="Precise, honest build status for the proclaim Logos registry and related prize work: tests, CI, criterion counts, blockers and next steps.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="index.html">proclaim<span class="dot">.</span></a>
+  <nav>
+    <a href="index.html">Overview</a>
+    <a href="build.html" class="active">Build status</a>
+    <a href="https://github.com/goldennftplatform-svg/proclaim" target="_blank" rel="noopener">Source</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <div class="notice">
+    <strong>Read this first.</strong> Everything here is local or publicly verifiable. Nothing is
+    marked complete unless its check actually passes. “Local scaffolding” gives zero prize
+    credit. Deploy, testnet submission and any solution PR are on hold by explicit decision.
+  </div>
+
+  <h1>Build status</h1>
+  <p class="lead">Last updated 2026-11-20. Numbers come from
+  <a href="https://github.com/goldennftplatform-svg/proclaim-labs" target="_blank" rel="noopener">proclaim-labs</a>
+  and the public CI runs — re-run the commands yourself rather than trusting this page.</p>
+
+  <img src="status.svg" alt="Build status bars for LP-0023, LP-0021 and LP-0001" class="status-img">
+
+  <h2>Ranked by completion</h2>
+  <table>
+    <thead><tr><th>Prize</th><th>Money</th><th>Formal completion</th><th>One-line truth</th></tr></thead>
+    <tbody>
+      <tr><td><strong>LP-0023</strong> Program Registry</td><td>$2,000</td><td><span class="pill green">15 / 28 items</span></td><td>Product built and published; blocked on one CI run, then 7 adoption items.</td></tr>
+      <tr><td><strong>LP-0021</strong> Wallet + Provider SDK</td><td>$20,000</td><td><span class="pill purple">0 / 32 criteria</span></td><td>Secure core + provider client built locally; the actual wallet is not.</td></tr>
+      <tr><td><strong>LP-0001</strong> NFT + Private Proofs</td><td>$5,000</td><td><span class="pill blue">0 / 46 criteria</span></td><td>Proof statement designed; the mock is explicitly not a zero-knowledge proof.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>What is actually built and verified</h2>
+  <table>
+    <thead><tr><th>Workspace</th><th>Tests</th><th>What it really is</th></tr></thead>
+    <tbody>
+      <tr><td><code>lp0001-phase0</code></td><td>44 pass</td><td>Test fixture locking down the private-transfer statement. <strong>Mock backend — not ZK, no privacy claim.</strong></td></tr>
+      <tr><td><code>lp0021-permissions</code></td><td>23 pass</td><td>Deny-by-default, individually revocable consent store. Zero dependencies.</td></tr>
+      <tr><td><code>lp0021-phase0</code></td><td>20 pass</td><td>Wallet secure core, encrypted keystore abstraction, approval state machine.</td></tr>
+      <tr><td><code>lp0021-phase1</code></td><td>51 pass</td><td>Local ledger replay, balances, approval-gated send/receive, restart reconstruction.</td></tr>
+    </tbody>
+  </table>
+  <p class="muted"><strong>138 passing tests total.</strong> Every workspace is clean under
+  <code>cargo fmt --check</code> and <code>cargo clippy --all-targets -- -D warnings</code>, scanned for secrets,
+  and dual-licensed <code>MIT AND Apache-2.0</code>. Re-run from the labs repo.</p>
+
+  <h2>CI</h2>
+  <p>Public run #9 (<code>44675296239</code>) on commit <code>955c4c1</code>:
+  Rust <span class="pill green">pass</span> JS <span class="pill green">pass</span>
+  E2E with a real standalone sequencer <span class="pill amber">in progress</span>.
+  Each failed run reached one step further; the current fix pins the RISC Zero guest
+  toolchain to 1.97.0 (1.94.1 could not link <code>__atomic_store_1</code>).</p>
+
+  <h2>Hard blockers</h2>
+  <ul>
+    <li><strong>Testnet 0.4</strong> — no live endpoint or stable release (roadmap target 30 Nov 2026).</li>
+    <li><strong>Real users</strong> — adoption needs independent humans with genuine account histories. Cannot be manufactured.</li>
+    <li><strong>Basecamp / deploy</strong> — on hold by explicit decision.</li>
+  </ul>
+
+  <h2>What's next</h2>
+  <ol>
+    <li>Finish CI run #9; if green, mark the last LP-0023 technical item and finalize the solution draft (still no PR).</li>
+    <li>LP-0021 Phase 2: local <code>testimonial_store</code> semantics, token/private-account adapters, then the on-chain program when 0.4 exists.</li>
+    <li>Publish starter kits and keep the public page honest as adoption accrues — never invent it.</li>
+  </ol>
+
+  <h2>Public repositories</h2>
+  <ul class="links">
+    <li><a href="https://github.com/goldennftplatform-svg/proclaim" target="_blank" rel="noopener">proclaim</a> — the registry product and CI.</li>
+    <li><a href="https://github.com/goldennftplatform-svg/proclaim-labs" target="_blank" rel="noopener">proclaim-labs</a> — verified local workspaces and planning docs.</li>
+    <li><a href="https://github.com/goldennftplatform-svg/proclaim-module-starter" target="_blank" rel="noopener">proclaim-module-starter</a> — template for third-party integrations.</li>
+  </ul>
+</main>
+
+<footer class="wrap">
+  <p>Open source under <strong>MIT and Apache-2.0</strong> (both apply). Built in the open.</p>
+</footer>
+</body>
+</html>
