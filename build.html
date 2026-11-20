@@ -20,19 +20,21 @@
 
 <main class="wrap">
   <div class="notice">
-    <strong>Read this first.</strong> Everything here is local or publicly verifiable. Nothing is
-    marked complete unless its check actually passes. “Local scaffolding” gives zero prize
-    credit. Deploy, testnet submission and any solution PR are on hold by explicit decision.
+    <strong>Read this first.</strong> This is one independent builder publishing local work
+    for review, not a prize submission or a claim on anyone's process. Everything here is
+    local or publicly verifiable. Nothing is marked complete unless its check actually
+    passes. “Local scaffolding” gives zero prize credit. Deploy, testnet submission and
+    any solution PR are on hold by explicit decision. Corrections and feedback are welcome.
   </div>
 
   <h1>Build status</h1>
-  <p class="lead">Last updated 2026-11-20 (CI run #10 in progress; LP-0021 Phase 2 verified). Numbers come from
+  <p class="lead">Last updated 2026-11-20 (CI run #10 failed at the guest program-ID assertion; 278 verified local tests). Numbers come from
   <a href="https://github.com/goldennftplatform-svg/proclaim-labs" target="_blank" rel="noopener">proclaim-labs</a>
   and the public CI runs — re-run the commands yourself rather than trusting this page.</p>
 
   <img src="status.svg" alt="Build status bars for LP-0023, LP-0021 and LP-0001" class="status-img">
 
-  <h2>Ranked by completion</h2>
+  <h2>Status by RFP (self-assessed, not a claim)</h2>
   <table>
     <thead><tr><th>Prize</th><th>Money</th><th>Formal completion</th><th>One-line truth</th></tr></thead>
     <tbody>
@@ -50,18 +52,24 @@
       <tr><td><code>lp0021-permissions</code></td><td>23 pass</td><td>Deny-by-default, individually revocable consent store. Zero dependencies.</td></tr>
       <tr><td><code>lp0021-phase0</code></td><td>20 pass</td><td>Wallet secure core, encrypted keystore abstraction, approval state machine.</td></tr>
       <tr><td><code>lp0021-phase1</code></td><td>51 pass</td><td>Local ledger replay, balances, approval-gated send/receive, restart reconstruction.</td></tr>
+      <tr><td><code>lp0021-phase2-testimonials</code></td><td>50 pass</td><td>Local <code>testimonial_store</code> model. Not an on-chain program.</td></tr>
+      <tr><td><code>lp0021-phase3</code></td><td>50 pass</td><td>Local token ledger, opaque private-account handles and effects summary. Opaque handles are not real privacy.</td></tr>
+      <tr><td><code>lp0023-claim-binding</code></td><td>40 pass</td><td>Deployer-claim rejection demo. Toy signature model — not real cryptography.</td></tr>
     </tbody>
   </table>
-  <p class="muted"><strong>138 passing tests total.</strong> Every workspace is clean under
+  <p class="muted"><strong>278 passing tests across seven local workspaces.</strong> Every workspace is clean under
   <code>cargo fmt --check</code> and <code>cargo clippy --all-targets -- -D warnings</code>, scanned for secrets,
   and dual-licensed <code>MIT AND Apache-2.0</code>. Re-run from the labs repo.</p>
 
   <h2>CI</h2>
-  <p>Public run #9 (<code>44675296239</code>) on commit <code>955c4c1</code>:
+  <p>Public run #10 (<code>44678946709</code>) on commit <code>29da69c</code>:
   Rust <span class="pill green">pass</span> JS <span class="pill green">pass</span>
-  E2E with a real standalone sequencer <span class="pill amber">in progress</span>.
-  Each failed run reached one step further; the current fix pins the RISC Zero guest
-  toolchain to 1.97.0 (1.94.1 could not link <code>__atomic_store_1</code>).</p>
+  E2E with a real standalone sequencer <span class="pill amber">failed</span> at the
+  guest program-ID assertion — the rebuilt image ID
+  <code>5f80583a…</code> did not match the deployed <code>4df7d539…</code>.
+  Earlier runs fixed the toolchain (<code>955c4c1</code>), a linker error and a missing
+  <code>docker/</code> directory (<code>29da69c</code>). This mismatch is diagnosed, not
+  fixed; the E2E item stays unchecked.</p>
 
   <h2>Hard blockers</h2>
   <ul>
@@ -72,9 +80,9 @@
 
   <h2>What's next</h2>
   <ol>
-    <li>Finish the E2E CI job (run #9 failed at a missing <code>docker/</code> dir; fixed in <code>29da69c</code>, run #10 running). If green, finalize the LP-0023 solution draft — still no PR.</li>
-    <li>LP-0021 Phase 2: the local <code>testimonial_store</code> model is built and verified (50 tests); next are token/private-account adapters and the on-chain program when 0.4 exists.</li>
-    <li>Publish starter kits and keep this page honest as adoption accrues — never invent it.</li>
+    <li>Find the input that makes the guest program ID differ on a clean runner, pin it, and re-run E2E. No item is checked until the run is green.</li>
+    <li>Finish verifying the real RISC Zero proof workspace for LP-0001 (in progress locally). The existing mock is explicitly not a zero-knowledge proof.</li>
+    <li>Keep publishing local scaffolding as reference material for other builders. No solution PR, no deploy, and no adoption figures unless they are real.</li>
   </ol>
 
   <h2>Public repositories</h2>
