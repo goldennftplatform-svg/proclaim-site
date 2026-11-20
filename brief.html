@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!-- SPDX-License-Identifier: MIT AND Apache-2.0 -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>proclaim — three shipped tools for Logos builders</title>
+<meta name="description" content="Three installable, tested artifacts from one independent Logos builder: a guest-ID CLI, a wallet provider SDK with an approval gate, and a signed Basecamp module.">
+<link rel="canonical" href="https://goldennftplatform-svg.github.io/proclaim-site/brief.html">
+<base href="https://goldennftplatform-svg.github.io/proclaim-site/">
+<link rel="stylesheet" href="https://goldennftplatform-svg.github.io/proclaim-site/style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="https://goldennftplatform-svg.github.io/proclaim-site/brief.html">proclaim<span class="dot">.</span><span class="product">one builder · three shipped tools</span></a>
+  <nav>
+    <a href="https://goldennftplatform-svg.github.io/proclaim-site/brief.html" class="active">Brief</a>
+    <a href="https://goldennftplatform-svg.github.io/proclaim-site/index.html">Goals &amp; status</a>
+    <a href="https://github.com/goldennftplatform-svg" target="_blank" rel="noopener">Code</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <div class="notice">
+    <strong>One independent builder, new to the Logos stack.</strong> Everything here is a real,
+    tagged, reproducible artifact — not a roadmap. No prize submission, no deployment, no users.
+  </div>
+
+  <h1>The problem I actually hit</h1>
+  <p class="lead">Build the same RISC Zero guest from a different directory and the image ID
+  <strong>changes</strong> — even though the source is identical. Cargo embeds path-derived symbols
+  in the ELF. An ID recorded on one machine is not a safe comparison value on another, and a wrong
+  ID means you verify or call the wrong program.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="ico">🔍</div>
+      <h3>proclaim-verify v1.0.0</h3>
+      <p>A CLI that tells you the truth about the binary you actually have: real image-ID lookup
+      via <code>lgs</code>, expected-ID comparison with CI-safe exit codes, base58 encoding, and
+      canonical-path rebuild.</p>
+      <p>Shipped with a public battle-test kit and <strong>11 recorded adversarial cases</strong>,
+      including the first harness failure — kept, not hidden.</p>
+      <p><a href="https://github.com/goldennftplatform-svg/proclaim-verify/releases/tag/v1.0.0" target="_blank" rel="noopener">Release →</a> ·
+      <a href="https://github.com/goldennftplatform-svg/proclaim-verify/blob/main/ONE-PAGER.md" target="_blank" rel="noopener">Try it in 60 seconds →</a></p>
+    </div>
+  </div>
+
+  <h2>What else is shipped</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="ico">🔐</div>
+      <h3>proclaim-wallet v1.0.0</h3>
+      <p>LP-0021 reference Wallet Provider SDK + CLI, also published as an npm package. The
+      approval gate is the point: <strong>no signing without explicit authorize()</strong>.
+      23/23 tests, 8/8 attack cases held, green CI. Mock adapters — no chain, no keystore.</p>
+      <p><a href="https://github.com/goldennftplatform-svg/proclaim-wallet/releases/tag/v1.0.0" target="_blank" rel="noopener">Release →</a></p>
+    </div>
+    <div class="card">
+      <div class="ico">🧩</div>
+      <h3>registry.lgx</h3>
+      <p>A signed Qt/QML Basecamp module for the registry program. Built locally, packaged with
+      <code>lgx</code>, and verified: valid Ed25519 <code>did:jwk</code> signature, linux-amd64
+      variant, published as a release asset.</p>
+      <p><a href="https://github.com/goldennftplatform-svg/proclaim/releases/tag/v0.2.0-lgx" target="_blank" rel="noopener">Release →</a></p>
+    </div>
+  </div>
+
+  <h2>Honest scope</h2>
+  <p class="muted">These are local, mock-backed reference tools. Nothing is deployed, nothing is
+  on-chain, no one has adopted them, and no prize criterion is claimed. Signing keys are dev keys;
+  the module is not install-tested in Basecamp. I am sharing working code to get real review, not
+  asking for credit.</p>
+
+  <h2>The ask</h2>
+  <p class="lead">If you build RISC Zero guests, run the battle-test kit and tell me where it
+  breaks. Real bugs and nasty input cases are worth more than stars.</p>
+
+  <div class="cta">
+    <a class="button" href="https://github.com/goldennftplatform-svg/proclaim-verify/blob/main/BATTLE-TEST.md" target="_blank" rel="noopener">Try to break proclaim-verify</a>
+    <a class="button ghost" href="https://goldennftplatform-svg.github.io/proclaim-site/index.html">Where I actually am →</a>
+  </div>
+</main>
+
+<footer class="wrap">
+  <p>An <a href="https://aisp.live" target="_blank" rel="noopener">aisp.live</a> effort.
+  Open source under <strong>MIT and Apache-2.0</strong> (both apply).</p>
+</footer>
+</body>
+</html>
