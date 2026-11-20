@@ -16,5 +16,5 @@
       <rect x="60" y="280" width="760" height="12" rx="6" fill="#1e293b"/>
       <rect x="60" y="280" width="38.0" height="12" rx="6" fill="#6ee7ff"/>
   </g>
-  <text x="60" y="326" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" fill="#64748b">326 passing tests across eight local workspaces · CI rerun 44695605569 in flight</text>
+  <text x="60" y="326" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" fill="#64748b">326 passing tests across eight local workspaces · E2E CI still failing</text>
 </svg>

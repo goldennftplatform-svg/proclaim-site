@@ -31,7 +31,7 @@
   </div>
 
   <h1>Build status</h1>
-  <p class="lead">Last updated 2026-11-20 (CI rerun 44695605569 in flight; 326 tests independently re-verified from fresh clones). Numbers come from
+  <p class="lead">Last updated 2026-11-20 (E2E CI still failing — details below; 326 tests independently re-verified from fresh clones). Numbers come from
   <a href="https://github.com/goldennftplatform-svg/proclaim-labs" target="_blank" rel="noopener">proclaim-labs</a>
   and the public CI runs — re-run the commands yourself rather than trusting this page.</p>
 
@@ -41,7 +41,7 @@
   <table>
     <thead><tr><th>Prize</th><th>Money</th><th>Formal completion</th><th>One-line truth</th></tr></thead>
     <tbody>
-      <tr><td><strong>LP-0023</strong> Program Registry</td><td>$2,000</td><td><span class="pill green">15 / 28 items</span></td><td>Product built and published; blocked on one CI run, then 7 adoption items.</td></tr>
+      <tr><td><strong>LP-0023</strong> Program Registry</td><td>$2,000</td><td><span class="pill green">15 / 28 items</span></td><td>Standing down — an independent implementation is further ahead. See below.</td></tr>
       <tr><td><strong>LP-0021</strong> Wallet + Provider SDK</td><td>$20,000</td><td><span class="pill purple">0 / 32 criteria</span></td><td>Secure core + provider client built locally; the actual wallet is not.</td></tr>
       <tr><td><strong>LP-0001</strong> NFT + Private Proofs</td><td>$5,000</td><td><span class="pill blue">0 / 46 criteria</span></td><td>Real zkVM proof now built locally; no on-chain verifier, GUI, testnet or users.</td></tr>
     </tbody>
@@ -58,30 +58,32 @@
       <tr><td><code>lp0021-phase2-testimonials</code></td><td>50 pass</td><td>Local <code>testimonial_store</code> model. Not an on-chain program.</td></tr>
       <tr><td><code>lp0021-phase3</code></td><td>50 pass</td><td>Local token ledger, opaque private-account handles and effects summary. Opaque handles are not real privacy.</td></tr>
       <tr><td><code>lp0023-claim-binding</code></td><td>40 pass</td><td>Deployer-claim rejection demo. Toy signature model — not real cryptography.</td></tr>
+      <tr><td><code>lp0021-phase4-provider-protocol</code></td><td>45 pass</td><td>Local versioned envelopes, correlation IDs, retry/dedupe, cancel/timeout and audit log. In-memory model, not real transport.</td></tr>
     </tbody>
   </table>
   <p class="muted"><strong>326 passing tests across eight local workspaces.</strong> Every workspace is clean under
   <code>cargo fmt --check</code> and <code>cargo clippy --all-targets -- -D warnings</code>, scanned for secrets,
   and dual-licensed <code>MIT AND Apache-2.0</code>. Re-run from the labs repo.</p>
 
-  <h2>CI</h2>
-  <p>Earlier public run #10 (<code>44678946709</code>) on commit <code>29da69c</code>:
-  Rust <span class="pill green">pass</span> JS <span class="pill green">pass</span>
-  E2E with a real standalone sequencer <span class="pill amber">failed</span> at the
-  guest program-ID assertion — the rebuilt image ID
-  <code>5f80583a…</code> did not match the deployed <code>4df7d539…</code>.
-  Earlier runs fixed the toolchain (<code>955c4c1</code>), a linker error and a missing
-  <code>docker/</code> directory (<code>29da69c</code>). This mismatch is diagnosed, not
-     fixed; the E2E item stays unchecked.</p>
-   <p>Run <code>44691864048</code> on <code>ba01dd0</code>: Rust pass, JS pass, and the
-   guest program-ID assertion <strong>passed</strong> (clean-build ID <code>5f80583a…</code>).
-   The lifecycle then failed on a config bug: GitHub Actions coerced the unquoted
-   channel ID to <code>1.01010101010101E+62</code>. Fix <code>6c59b9f</code> quotes it and
-   rejects malformed values; rerun <code>44695605569</code> is in flight. Nothing is checked
-   until a run is green.</p>
+  <h2>CI — current result</h2>
+  <p>On the default branch, JS client tests and Rust fmt/clippy/unit tests are
+  <span class="pill green">passing</span>. The E2E job against a real standalone sequencer is
+  <span class="pill amber">still failing</span>. Nothing is checked on the strength of a
+  partial run.</p>
+  <p>Run <code>44691864048</code> (<code>ba01dd0</code>) fixed the path-dependent guest
+  program-ID assertion: the clean-build ID <code>5f80583a…</code> was accepted. The run then
+  failed because GitHub Actions coerced an unquoted channel ID to
+  <code>1.01010101010101E+62</code>. Commit <code>6c59b9f</code> quoted the value and added a
+  guard that rejects malformed IDs.</p>
+  <p>Run <code>44695605569</code> (<code>6c59b9f</code>) confirmed that fix: the channel ID was
+  correct (<code>0101…0101</code>), the guest program-ID assertion passed, and register,
+  update and search transactions were confirmed on the local sequencer. The run still ended
+  <span class="pill amber">failure</span> in the final lifecycle check after the
+  <code>search</code> transaction. Raw output is in that run's <code>e2e-diagnostics</code>
+  artifact. The E2E item remains unchecked — this is not a green build.</p>
 
   <h2>Launch readiness (tools, not criteria)</h2>
-  <p>Local tools are published for the day testnet 0.4 is live: an endpoint probe,
+  <p>The official zone is live, but we have not deployed to it. These local tools are published for that launch: an endpoint probe,
   a hash-chained log for <strong>real</strong> events, and a deploy planner that never
   executes. They do <strong>not</strong> create users, a GUI, an on-chain verifier or the
   two-month clock. See <a href="https://github.com/goldennftplatform-svg/proclaim-labs/tree/main/launch-readiness" target="_blank" rel="noopener">the toolkit</a>.</p>

@@ -62,7 +62,7 @@ const status = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" r
       <rect x="60" y="${y+12}" width="${(w*r[2]).toFixed(1)}" height="12" rx="6" fill="${r[3]}"/>`;
     }).join('')}
   </g>
-  <text x="60" y="326" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" fill="#64748b">326 passing tests across eight local workspaces · CI rerun 44695605569 in flight</text>
+  <text x="60" y="326" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" fill="#64748b">326 passing tests across eight local workspaces · E2E CI still failing</text>
 </svg>`;
 
 const spdx = '<!-- SPDX-License-Identifier: MIT AND Apache-2.0 -->\n';
