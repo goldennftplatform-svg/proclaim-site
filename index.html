@@ -4,98 +4,107 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>proclaim — a public registry for Logos programs | aisp.live</title>
-<meta name="description" content="proclaim is an open-source public registry for Logos programs: find who built what, verify the source, and search by name. An aisp.live product.">
-<!-- Canonical stays on the stable Pages URL while domain forwarding is temporary. -->
+<title>Independent Logos builder — goals, shipped work, honest status</title>
+<meta name="description" content="One independent builder working in public on Logos/LEZ: real goals, what's actually shipped, what's blocked, and what's next. No prize claims, no inflated numbers.">
 <link rel="canonical" href="https://goldennftplatform-svg.github.io/proclaim-site/">
 <base href="https://goldennftplatform-svg.github.io/proclaim-site/">
 <link rel="stylesheet" href="https://goldennftplatform-svg.github.io/proclaim-site/style.css">
 </head>
 <body>
 <header class="nav">
-  <a class="brand" href="https://goldennftplatform-svg.github.io/proclaim-site/index.html">proclaim<span class="dot">.</span><span class="product">an aisp.live product</span></a>
+  <a class="brand" href="https://goldennftplatform-svg.github.io/proclaim-site/index.html">builder<span class="dot">.</span><span class="product">independent · aisp.live</span></a>
   <nav>
     <a href="https://goldennftplatform-svg.github.io/proclaim-site/index.html" class="active">Overview</a>
-    <a href="https://goldennftplatform-svg.github.io/proclaim-site/build.html">Build status</a>
-    <a href="https://github.com/goldennftplatform-svg/proclaim" target="_blank" rel="noopener">Source</a>
+    <a href="https://goldennftplatform-svg.github.io/proclaim-site/build.html">Technical detail</a>
+    <a href="https://github.com/goldennftplatform-svg" target="_blank" rel="noopener">Code</a>
   </nav>
 </header>
 
 <main>
 <section class="hero">
-  <img src="https://goldennftplatform-svg.github.io/proclaim-site/hero.svg" alt="proclaim — a public registry for Logos programs" class="hero-img">
+  <img src="https://goldennftplatform-svg.github.io/proclaim-site/hero.svg" alt="Independent Logos builder — goals, shipped work, honest status" class="hero-img">
 </section>
 
 <section class="wrap">
   <div class="notice">
-    <strong>One independent builder, sharing work in public.</strong> This is a personal,
-    early-stage project offered for review and reuse — not a team submission, not a prize
-    claim, and not a request for special treatment. The registry is published as a
-    downloadable module but is <em>not</em> deployed to a public testnet, and no solution
-    has been submitted to any prize. The <code>proclaim.aisp.live</code> forwarder only serves
-    its root address; use the direct links on this page for individual pages.
-    <a href="https://goldennftplatform-svg.github.io/proclaim-site/build.html">See exactly where the build is →</a>
+    <strong>Read this first.</strong> I'm one independent builder, new to the Logos stack. This page
+    states my goals, what I've actually shipped, and what is still broken or missing. Nothing here
+    is a prize submission, a claim on anyone's process, or a request for special treatment. Numbers
+    are real or they aren't printed. Assume I'm still learning.
   </div>
 
+  <h1>My goals</h1>
+  <ol class="goals">
+    <li><strong>Ship real, tested tools for Logos builders.</strong> Not mockups — things someone else can clone, run, and break. Start with the guest program-ID verification problem I hit myself.</li>
+    <li><strong>Earn credibility the slow way.</strong> Publish failing CI, honest self-assessments and raw logs. Let the code and the test results speak; no fabricated users, testimonials or adoption.</li>
+    <li><strong>Compete for a λPrize with an actual deployable solution.</strong> Focus on LP-0001 (NFT + private proofs) and LP-0021 (wallet + provider SDK). LP-0023 is stood down — an independent implementation is further ahead.</li>
+  </ol>
+
+  <h2>Where we are right now</h2>
   <div class="stats">
-    <div class="stat"><b>326</b><span>passing tests</span></div>
-    <div class="stat"><b>8</b><span>local workspaces</span></div>
-    <div class="stat"><b>v1.0.0</b><span>first shipped release</span></div>
-    <div class="stat"><b>0</b><span>on-chain users</span></div>
+    <div class="stat"><b>1</b><span>released tool</span></div>
+    <div class="stat"><b>326</b><span>local passing tests</span></div>
+    <div class="stat"><b>0</b><span>on-chain deployments</span></div>
+    <div class="stat"><b>0</b><span>users / testimonials</span></div>
   </div>
+  <p class="muted">The 326 tests are local and self-verified, including from fresh clones. They are
+  <strong>not</strong> prize credit, third-party review, or evidence of a working public deployment.</p>
 
-  <h1>What is proclaim?</h1>
-  <p class="lead">Imagine an app store, but instead of phone apps it lists the small programs
-  that run inside the Logos network. Right now there is no easy way to answer simple
-  questions like <em>“who made this?”</em> or <em>“has anyone checked that the source code
-  matches the thing being run?”</em> proclaim is a public directory that answers them.</p>
-
+  <h2>What's actually shipped</h2>
   <div class="cards">
     <div class="card">
-      <div class="ico">🔎</div>
-      <h3>Find things</h3>
-      <p>Search the catalog by name and see who published each program, when, and what it does.</p>
-    </div>
-    <div class="card">
-      <div class="ico">✅</div>
-      <h3>Check provenance</h3>
-      <p>A source-verification record links a program to the code it claims to come from, so you
-      can catch a mismatch instead of trusting a label.</p>
-    </div>
-    <div class="card">
-      <div class="ico">🧩</div>
-      <h3>Plugs into Logos</h3>
-      <p>Built as a Logos module with a command-line tool, a web API and a JavaScript client —
-      so other apps can use the same directory.</p>
+      <div class="ico">📦</div>
+      <h3>proclaim-verify v1.0.0</h3>
+      <p>A CLI for checking RISC Zero guest image IDs from a clean build. Tagged release, cloned fresh from the tag and re-tested there: logic checks pass, SPDX 10/10, known vector correct. Public battle-test kit and 11 recorded adversarial cases.</p>
+      <p><a href="https://github.com/goldennftplatform-svg/proclaim-verify/releases/tag/v1.0.0" target="_blank" rel="noopener">See the release →</a></p>
     </div>
   </div>
 
-  <h2>What's actually finished</h2>
+  <h2>What's built but not shipped</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="ico">🧪</div>
+      <h3>Local workspaces</h3>
+      <p>Eight Rust workspaces, 326 passing tests: wallet secure core, consent store, local ledger replay, testimonial model, token ledger, provider protocol, claim-binding demo and a proof statement fixture. All in-memory or local — no on-chain program.</p>
+    </div>
+    <div class="card">
+      <div class="ico">🔗</div>
+      <h3>Registry code</h3>
+      <p>The proclaim registry program, CLI, HTTP API and JS client exist locally. The E2E test against a real standalone sequencer is still failing, so nothing has been deployed to a public chain.</p>
+    </div>
+    <div class="card">
+      <div class="ico">🔐</div>
+      <h3>LP-0001 proof work</h3>
+      <p>A real zkVM proof was built locally with measured cycles. It is not published, not on-chain, and worth 0 of 46 criteria.</p>
+    </div>
+  </div>
+
+  <h2>What's blocking</h2>
   <ul class="checks">
-    <li>Six working operations: register, update, mark verified, look up, search and initialise.</li>
-    <li>A published, signed module you can download and inspect.</li>
-    <li>A public catalog of logos and metadata.</li>
-    <li>Command-line tool, browser view, HTTP API and JavaScript client.</li>
-    <li>Automated tests for the code and a reproducible build pipeline.</li>
+    <li>E2E CI fails in the final lifecycle check after a successful register/update/search on a local sequencer. No green run yet.</li>
+    <li>No on-chain verifier or deployment. The official zone is live, but I haven't put anything on it.</li>
+    <li>No GUI inside Basecamp and no on-chain program for private proofs.</li>
+    <li>Every λPrize still needs real independent people and at least two months of sustained activity. That cannot be manufactured by tooling.</li>
   </ul>
 
-  <h2>What's still to do</h2>
-  <p>Getting a public network deployment, then real developers and users registering their own
-  programs over time. Software can't create that on its own — it needs people. The
-  <a href="https://github.com/goldennftplatform-svg/proclaim-module-starter" target="_blank" rel="noopener">starter template</a>
-  is published so any developer can build an integration.</p>
+  <h2>What's next</h2>
+  <ol class="goals">
+    <li>Diagnose and fix the failing E2E assertion, then get a green CI run on the default branch.</li>
+    <li>Decide whether to deploy a tested program to the live zone — only after that green run.</li>
+    <li>Keep shipping small, useful, honest tools that other builders can actually use.</li>
+  </ol>
 
   <div class="cta">
-    <a class="button" href="https://goldennftplatform-svg.github.io/proclaim-site/build.html">See the technical build status</a>
-    <a class="button ghost" href="https://github.com/goldennftplatform-svg/proclaim" target="_blank" rel="noopener">Browse the source on GitHub</a>
+    <a class="button" href="https://goldennftplatform-svg.github.io/proclaim-site/build.html">See the technical detail</a>
+    <a class="button ghost" href="https://github.com/goldennftplatform-svg" target="_blank" rel="noopener">Browse the code</a>
   </div>
 </section>
 </main>
 
 <footer class="wrap">
-  <p>An <a href="https://aisp.live" target="_blank" rel="noopener">aisp.live</a> product.
-  Open source under <strong>MIT and Apache-2.0</strong> (both apply). Built in the open.
-  No testimonials, downloads or adoption figures are claimed here.</p>
+  <p>An <a href="https://aisp.live" target="_blank" rel="noopener">aisp.live</a> effort.
+  Open source under <strong>MIT and Apache-2.0</strong> (both apply).
+  No prize, adoption, testimonial or deployment is claimed here.</p>
 </footer>
 </body>
 </html>

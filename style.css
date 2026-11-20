@@ -80,6 +80,15 @@ h3{margin:0 0 6px;font-size:19px;color:#fff}
 .checks{columns:2;column-gap:44px;padding-left:22px}
 .checks li{margin:9px 0;break-inside:avoid}
 .checks li::marker{color:var(--green)}
+.goals{counter-reset:goal;list-style:none;padding:0;margin:20px 0 10px}
+.goals li{position:relative;padding:16px 20px 16px 58px;margin-bottom:12px;
+  background:linear-gradient(160deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);border-radius:14px;color:var(--muted)}
+.goals li::before{counter-increment:goal;content:counter(goal);
+  position:absolute;left:18px;top:16px;width:26px;height:26px;border-radius:50%;
+  display:grid;place-items:center;font-weight:800;font-size:13px;color:#06101f;
+  background:linear-gradient(135deg,var(--aqua),var(--violet))}
+.goals strong{color:#fff}
 
 /* Stat strip */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin:30px 0 6px}

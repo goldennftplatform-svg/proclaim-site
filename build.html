@@ -4,120 +4,102 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Build status — proclaim | aisp.live</title>
-<meta name="description" content="Precise, honest build status for the proclaim Logos registry and related prize work: tests, CI, criterion counts, blockers and next steps. An aisp.live product.">
-<!-- Canonical stays on the stable Pages URL while domain forwarding is temporary. -->
+<title>Technical detail — independent Logos builder</title>
+<meta name="description" content="Exact technical status for an independent Logos builder: shipped release, local test workspaces, CI results, what is unmet, and what happens next.">
 <link rel="canonical" href="https://goldennftplatform-svg.github.io/proclaim-site/build.html">
 <base href="https://goldennftplatform-svg.github.io/proclaim-site/">
 <link rel="stylesheet" href="https://goldennftplatform-svg.github.io/proclaim-site/style.css">
 </head>
 <body>
 <header class="nav">
-  <a class="brand" href="https://goldennftplatform-svg.github.io/proclaim-site/index.html">proclaim<span class="dot">.</span><span class="product">an aisp.live product</span></a>
+  <a class="brand" href="https://goldennftplatform-svg.github.io/proclaim-site/index.html">builder<span class="dot">.</span><span class="product">independent · aisp.live</span></a>
   <nav>
     <a href="https://goldennftplatform-svg.github.io/proclaim-site/index.html">Overview</a>
-    <a href="https://goldennftplatform-svg.github.io/proclaim-site/build.html" class="active">Build status</a>
-    <a href="https://github.com/goldennftplatform-svg/proclaim" target="_blank" rel="noopener">Source</a>
+    <a href="https://goldennftplatform-svg.github.io/proclaim-site/build.html" class="active">Technical detail</a>
+    <a href="https://github.com/goldennftplatform-svg" target="_blank" rel="noopener">Code</a>
   </nav>
 </header>
 
 <main class="wrap">
   <div class="notice">
-    <strong>Read this first.</strong> This is one independent builder publishing local work
-    for review, not a prize submission or a claim on anyone's process. Everything here is
-    local or publicly verifiable. Nothing is marked complete unless its check actually
-    passes. “Local scaffolding” gives zero prize credit. Deploy, testnet submission and
-    any solution PR are on hold by explicit decision. Corrections and feedback are welcome.
+    <strong>No prize claim.</strong> This is one independent builder publishing local work for review.
+    Nothing is marked complete unless its check actually passes. “Built locally” gives zero prize
+    credit. No solution has been submitted, nothing is deployed, and all adoption counters are zero.
   </div>
 
-  <h1>Build status</h1>
-  <p class="lead">Last updated 2026-11-20 (E2E CI still failing — details below; 326 tests independently re-verified from fresh clones). Numbers come from
-  <a href="https://github.com/goldennftplatform-svg/proclaim-labs" target="_blank" rel="noopener">proclaim-labs</a>
-  and the public CI runs — re-run the commands yourself rather than trusting this page.</p>
+  <h1>Technical detail</h1>
+  <p class="lead">Last updated 2026-11-20. Every number here comes from a public repo or a public CI
+  run. Re-run the commands yourself rather than trusting this page.</p>
 
-  <img src="https://goldennftplatform-svg.github.io/proclaim-site/status.svg" alt="Build status bars for LP-0023, LP-0021 and LP-0001" class="status-img">
+  <img src="https://goldennftplatform-svg.github.io/proclaim-site/status.svg" alt="Status by prize: LP-0023, LP-0021, LP-0001" class="status-img">
 
-  <h2>Status by RFP (self-assessed, not a claim)</h2>
+  <h2>Shipped</h2>
   <div class="table-wrap"><table>
-    <thead><tr><th>Prize</th><th>Money</th><th>Formal completion</th><th>One-line truth</th></tr></thead>
+    <thead><tr><th>Artifact</th><th>Status</th><th>Evidence</th></tr></thead>
     <tbody>
-      <tr><td><strong>LP-0023</strong> Program Registry</td><td>$2,000</td><td><span class="pill green">15 / 28 items</span></td><td>Standing down — an independent implementation is further ahead. See below.</td></tr>
-      <tr><td><strong>LP-0021</strong> Wallet + Provider SDK</td><td>$20,000</td><td><span class="pill purple">0 / 32 criteria</span></td><td>Secure core + provider client built locally; the actual wallet is not.</td></tr>
-      <tr><td><strong>LP-0001</strong> NFT + Private Proofs</td><td>$5,000</td><td><span class="pill blue">0 / 46 criteria</span></td><td>Real zkVM proof now built locally; no on-chain verifier, GUI, testnet or users.</td></tr>
+      <tr><td><strong>proclaim-verify v1.0.0</strong></td><td><span class="pill green">released</span></td><td>Tagged release; clean-clone re-test passed; 11/11 recorded adversarial self-tests; public battle-test kit.</td></tr>
     </tbody>
   </table></div>
+  <p class="muted">That is the only thing with a version tag that anyone can download today.</p>
 
-  <h2>What is actually built and verified</h2>
+  <h2>Built locally — not shipped</h2>
   <div class="table-wrap"><table>
     <thead><tr><th>Workspace</th><th>Tests</th><th>What it really is</th></tr></thead>
     <tbody>
-      <tr><td><code>lp0001-phase0</code></td><td>44 pass</td><td>Test fixture locking down the private-transfer statement. <strong>Mock backend — not ZK, no privacy claim.</strong></td></tr>
-      <tr><td><code>lp0021-permissions</code></td><td>23 pass</td><td>Deny-by-default, individually revocable consent store. Zero dependencies.</td></tr>
-      <tr><td><code>lp0021-phase0</code></td><td>23 pass</td><td>Wallet secure core, encrypted keystore abstraction, approval state machine.</td></tr>
-      <tr><td><code>lp0021-phase1</code></td><td>51 pass</td><td>Local ledger replay, balances, approval-gated send/receive, restart reconstruction.</td></tr>
-      <tr><td><code>lp0021-phase2-testimonials</code></td><td>50 pass</td><td>Local <code>testimonial_store</code> model. Not an on-chain program.</td></tr>
-      <tr><td><code>lp0021-phase3</code></td><td>50 pass</td><td>Local token ledger, opaque private-account handles and effects summary. Opaque handles are not real privacy.</td></tr>
-      <tr><td><code>lp0023-claim-binding</code></td><td>40 pass</td><td>Deployer-claim rejection demo. Toy signature model — not real cryptography.</td></tr>
-      <tr><td><code>lp0021-phase4-provider-protocol</code></td><td>45 pass</td><td>Local versioned envelopes, correlation IDs, retry/dedupe, cancel/timeout and audit log. In-memory model, not real transport.</td></tr>
+      <tr><td><code>lp0001-phase0</code></td><td>44</td><td>Proof statement fixture. Mock backend — not zero-knowledge.</td></tr>
+      <tr><td><code>lp0021-permissions</code></td><td>23</td><td>Deny-by-default consent store. Zero dependencies.</td></tr>
+      <tr><td><code>lp0021-phase0</code></td><td>23</td><td>Secure-core types and keystore abstraction. No on-chain wallet.</td></tr>
+      <tr><td><code>lp0021-phase1</code></td><td>51</td><td>Local ledger replay and approval-gated transfers. In-memory.</td></tr>
+      <tr><td><code>lp0021-phase2-testimonials</code></td><td>50</td><td>Local testimonial model. Not an on-chain program.</td></tr>
+      <tr><td><code>lp0021-phase3</code></td><td>50</td><td>Local token ledger and opaque account handles — not real privacy.</td></tr>
+      <tr><td><code>lp0021-phase4-provider-protocol</code></td><td>45</td><td>Versioned envelopes, correlation IDs, retry/dedupe, audit log. In-memory model.</td></tr>
+      <tr><td><code>lp0023-claim-binding</code></td><td>40</td><td>Deployer-claim rejection demo. Toy signature model.</td></tr>
     </tbody>
   </table></div>
-  <p class="muted"><strong>326 passing tests across eight local workspaces.</strong> Every workspace is clean under
-  <code>cargo fmt --check</code> and <code>cargo clippy --all-targets -- -D warnings</code>, scanned for secrets,
-  and dual-licensed <code>MIT AND Apache-2.0</code>. Re-run from the labs repo.</p>
+  <p class="muted"><strong>326 passing tests across eight workspaces.</strong> Fresh-clone verification
+  is published with raw logs. This is local reproduction on one machine, not third-party review.</p>
 
   <h2>CI — current result</h2>
-  <p>On the default branch, JS client tests and Rust fmt/clippy/unit tests are
-  <span class="pill green">passing</span>. The E2E job against a real standalone sequencer is
-  <span class="pill amber">still failing</span>. Nothing is checked on the strength of a
-  partial run.</p>
-  <p>Run <code>44691864048</code> (<code>ba01dd0</code>) fixed the path-dependent guest
-  program-ID assertion: the clean-build ID <code>5f80583a…</code> was accepted. The run then
-  failed because GitHub Actions coerced an unquoted channel ID to
-  <code>1.01010101010101E+62</code>. Commit <code>6c59b9f</code> quoted the value and added a
-  guard that rejects malformed IDs.</p>
-  <p>Run <code>44695605569</code> (<code>6c59b9f</code>) confirmed that fix: the channel ID was
-  correct (<code>0101…0101</code>), the guest program-ID assertion passed, and register,
-  update and search transactions were confirmed on the local sequencer. The run still ended
-  <span class="pill amber">failure</span> in the final lifecycle check after the
-  <code>search</code> transaction. Raw output is in that run's <code>e2e-diagnostics</code>
-  artifact. The E2E item remains unchecked — this is not a green build.</p>
+  <p>JS client tests and Rust fmt/clippy/unit tests are <span class="pill green">passing</span>.
+  The E2E job against a real standalone sequencer is <span class="pill amber">failing</span>.</p>
+  <p>Run <code>44691864048</code> (<code>ba01dd0</code>) fixed the path-dependent guest program-ID
+  assertion. Run <code>44695605569</code> (<code>6c59b9f</code>) fixed the channel-ID coercion: the
+  ID was correct, the program-ID assertion passed, and register, update and search transactions were
+  confirmed on the local sequencer. The run still exited 1 at the final search-result check, because
+  <code>lgs spel -- search</code> prints transaction diagnostics but not the returned entries.
+  The E2E item stays unchecked — this is not a green build.</p>
 
-  <h2>Launch readiness (tools, not criteria)</h2>
-  <p>The official zone is live, but we have not deployed to it. These local tools are published for that launch: an endpoint probe,
-  a hash-chained log for <strong>real</strong> events, and a deploy planner that never
-  executes. They do <strong>not</strong> create users, a GUI, an on-chain verifier or the
-  two-month clock. See <a href="https://github.com/goldennftplatform-svg/proclaim-labs/tree/main/launch-readiness" target="_blank" rel="noopener">the toolkit</a>.</p>
+  <h2>Prize targets</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Prize</th><th>Status</th><th>Honest position</th></tr></thead>
+    <tbody>
+      <tr><td><strong>LP-0023</strong> Program Registry</td><td><span class="pill amber">stood down</span></td><td>An independent implementation is further ahead. We are not competing for it.</td></tr>
+      <tr><td><strong>LP-0021</strong> Wallet + Provider SDK</td><td><span class="pill blue">0 / 32 criteria</span></td><td>Local secure core and provider model only. No wallet GUI, no on-chain users.</td></tr>
+      <tr><td><strong>LP-0001</strong> NFT + Private Proofs</td><td><span class="pill blue">0 / 46 criteria</span></td><td>Real zkVM receipt built locally. No verifier, no GUI, no testnet, no users.</td></tr>
+    </tbody>
+  </table></div>
 
   <h2>Hard blockers</h2>
-  <ul>
-    <li><strong>Official testnet 0.4 is live</strong> at <code>https://testnet.lez.logos.co</code> (probed 2026-11-20, channel ID <code>0101…0101</code>). We have <strong>not</strong> deployed there.</li>
-    <li><strong>Real users</strong> — adoption needs independent humans with genuine account histories. Cannot be manufactured.</li>
-    <li><strong>Basecamp / deploy</strong> — on hold by explicit decision.</li>
+  <ul class="checks">
+    <li>E2E lifecycle not green — no deploy until it is.</li>
+    <li>Official testnet 0.4 is live at <code>https://testnet.lez.logos.co</code>, but nothing has been deployed there.</li>
+    <li>No on-chain verifier, no Basecamp GUI, no third-party apps.</li>
+    <li>Adoption needs real independent people over at least two months. Zero today; cannot be manufactured.</li>
   </ul>
 
-  <h2>What's next</h2>
-  <ol>
-    <li>Get a green E2E run on the default branch. No item is checked until the run is green.</li>
-    <li>Keep verifying the real RISC Zero proof workspace for LP-0001. It is a real zkVM receipt locally, but still 0/46 criteria.</li>
-    <li>Keep publishing local scaffolding as reference material for other builders. No solution PR, no deploy, and no adoption figures unless they are real.</li>
-    <li>LP-0023 is no longer a target for us: an independent implementation (<code>jefdiesel/lez-program-registry</code>) is further ahead technically, with its own CLI, SDK, Basecamp module and CI. Its deployment is on a third-party bridge network, not the canonical Logos zone, and it has no solution PR — but we are standing down rather than competing.</li>
-  </ol>
-
-  <h2>Public repositories</h2>
+  <h2>Repositories and evidence</h2>
   <ul class="links">
-    <li><a href="https://github.com/goldennftplatform-svg/proclaim" target="_blank" rel="noopener">proclaim</a> — the registry product and CI.</li>
-    <li><a href="https://github.com/goldennftplatform-svg/proclaim-labs" target="_blank" rel="noopener">proclaim-labs</a> — verified local workspaces and planning docs.</li>
-    <li><a href="https://github.com/goldennftplatform-svg/proclaim-verify/releases/tag/v1.0.0" target="_blank" rel="noopener">proclaim-verify v1.0.0</a> — tagged release, cloned and re-tested from a clean checkout. A CLI for checking guest program IDs and reproducible builds.</li>
-    <li><a href="https://github.com/goldennftplatform-svg/proclaim-verify/blob/main/BATTLE-TEST.md" target="_blank" rel="noopener">Battle-test kit</a> — clone, run, and tell us what breaks.</li>
-    <li><a href="https://github.com/goldennftplatform-svg/proclaim-labs/blob/main/docs/LP-0023-SELF-ASSESSMENT.md" target="_blank" rel="noopener">LP-0023 self-assessment</a> — every criterion, including what is missing and all zero adoption counters.</li>
-    <li><a href="https://github.com/goldennftplatform-svg/proclaim-module-starter" target="_blank" rel="noopener">proclaim-module-starter</a> — template for third-party integrations. Its <code>RESULT.md</code> states exactly what was checked.</li>
-    <li><a href="https://github.com/goldennftplatform-svg/proclaim-labs/tree/main/verification/clean-clone" target="_blank" rel="noopener">Fresh-clone verification</a> — raw commands and logs from three public repos, including the 323→326 correction.</li>
+    <li><a href="https://github.com/goldennftplatform-svg/proclaim-verify/releases/tag/v1.0.0" target="_blank" rel="noopener">proclaim-verify v1.0.0</a> — the shipped release.</li>
+    <li><a href="https://github.com/goldennftplatform-svg/proclaim-verify/blob/main/BATTLE-TEST.md" target="_blank" rel="noopener">Battle-test kit</a> — clone it and try to break it.</li>
+    <li><a href="https://github.com/goldennftplatform-svg/proclaim-labs" target="_blank" rel="noopener">proclaim-labs</a> — all local workspaces and planning docs.</li>
+    <li><a href="https://github.com/goldennftplatform-svg/proclaim-labs/tree/main/verification/clean-clone" target="_blank" rel="noopener">Fresh-clone verification</a> — raw commands and logs.</li>
+    <li><a href="https://github.com/goldennftplatform-svg/proclaim" target="_blank" rel="noopener">proclaim</a> — registry code and CI.</li>
   </ul>
 </main>
 
 <footer class="wrap">
-  <p>An <a href="https://aisp.live" target="_blank" rel="noopener">aisp.live</a> product.
-  Open source under <strong>MIT and Apache-2.0</strong> (both apply). Built in the open.</p>
+  <p>An <a href="https://aisp.live" target="_blank" rel="noopener">aisp.live</a> effort.
+  Open source under <strong>MIT and Apache-2.0</strong> (both apply).</p>
 </footer>
 </body>
 </html>
