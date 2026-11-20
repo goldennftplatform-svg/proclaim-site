@@ -48,7 +48,7 @@
     <div class="stat"><b>0</b><span>on-chain deployments</span></div>
     <div class="stat"><b>0</b><span>users / testimonials</span></div>
   </div>
-  <p class="muted">The 326 tests are local and self-verified, including from fresh clones. They are
+  <p class="muted">The 349 tests are local and self-verified, including from fresh clones. They are
   <strong>not</strong> prize credit, third-party review, or evidence of a working public deployment.</p>
 
   <h2>What's actually shipped</h2>
@@ -72,12 +72,12 @@
     <div class="card">
       <div class="ico">🧪</div>
       <h3>Local workspaces</h3>
-      <p>Eight Rust workspaces, 326 passing tests: wallet secure core, consent store, local ledger replay, testimonial model, token ledger, provider protocol, claim-binding demo and a proof statement fixture. All in-memory or local — no on-chain program.</p>
+      <p>Eight local Rust workspaces plus the wallet SDK, 349 passing tests: wallet secure core, consent store, local ledger replay, testimonial model, token ledger, provider protocol, claim-binding demo, a proof statement fixture and the wallet provider SDK. All in-memory or local — no on-chain program.</p>
     </div>
     <div class="card">
       <div class="ico">🔗</div>
       <h3>Registry code</h3>
-      <p>The proclaim registry program, CLI, HTTP API and JS client exist locally. The E2E test against a real standalone sequencer is still failing, so nothing has been deployed to a public chain.</p>
+      <p>The proclaim registry program, CLI, HTTP API and JS client exist locally. The E2E lifecycle against a real standalone sequencer now passes end to end, including the HTTP API. Nothing has been deployed to a public chain.</p>
     </div>
     <div class="card">
       <div class="ico">🔐</div>
@@ -88,7 +88,7 @@
 
   <h2>What's blocking</h2>
   <ul class="checks">
-    <li>E2E CI fails in the final lifecycle check after a successful register/update/search on a local sequencer. No green run yet.</li>
+    <li>E2E CI is green on a local sequencer (run <code>44792441611</code>). This is a dev-mode lifecycle test, not a public-chain deployment or a real-proving result.</li>
     <li>No on-chain verifier or deployment. The official zone is live, but I haven't put anything on it.</li>
     <li>No GUI inside Basecamp and no on-chain program for private proofs.</li>
     <li>Every λPrize still needs real independent people and at least two months of sustained activity. That cannot be manufactured by tooling.</li>
@@ -96,8 +96,8 @@
 
   <h2>What's next</h2>
   <ol class="goals">
-    <li>Diagnose and fix the failing E2E assertion, then get a green CI run on the default branch.</li>
-    <li>Decide whether to deploy a tested program to the live zone — only after that green run.</li>
+    <li>Keep the failing→passing E2E evidence and the two bugs it exposed public and reproducible.</li>
+    <li>Decide whether to deploy the tested program to the live zone — the engineering gate is now satisfied.</li>
     <li>Keep shipping small, useful, honest tools that other builders can actually use.</li>
   </ol>
 

@@ -57,18 +57,22 @@
       <tr><td><code>lp0023-claim-binding</code></td><td>40</td><td>Deployer-claim rejection demo. Toy signature model.</td></tr>
     </tbody>
   </table></div>
-  <p class="muted"><strong>326 passing tests across eight workspaces.</strong> Fresh-clone verification
+  <p class="muted"><strong>349 passing tests across eight local workspaces plus the wallet SDK.</strong> Fresh-clone verification
   is published with raw logs. This is local reproduction on one machine, not third-party review.</p>
 
   <h2>CI — current result</h2>
-  <p>JS client tests and Rust fmt/clippy/unit tests are <span class="pill green">passing</span>.
-  The E2E job against a real standalone sequencer is <span class="pill amber">failing</span>.</p>
-  <p>Run <code>44691864048</code> (<code>ba01dd0</code>) fixed the path-dependent guest program-ID
-  assertion. Run <code>44695605569</code> (<code>6c59b9f</code>) fixed the channel-ID coercion: the
-  ID was correct, the program-ID assertion passed, and register, update and search transactions were
-  confirmed on the local sequencer. The run still exited 1 at the final search-result check, because
-  <code>lgs spel -- search</code> prints transaction diagnostics but not the returned entries.
-  The E2E item stays unchecked — this is not a green build.</p>
+  <p>All three jobs are <span class="pill green">passing</span> on the default branch, including
+  the E2E lifecycle against a real standalone sequencer. Run <code>44792441611</code>
+  (<code>1015a8a</code>): build, program-ID assertion, register → update → mark-verified → search,
+  browser reads and the HTTP API all passed. <code>RISC0_DEV_MODE=1</code> was used — this is a
+  lifecycle/read test, not a real-proving result.</p>
+  <p>Two real bugs were found and fixed in public on the way there. Run <code>44695605569</code>
+  failed because <code>lgs spel -- search</code> prints transaction diagnostics, not decoded
+  entries — fixed in <code>3d8fd86</code>. Run <code>44781784603</code> then failed at
+  <code>/index</code> with HTTP 500: the API inherited a stale <code>REGISTRY_PROGRAM_ID</code>
+  from CI env while the lifecycle deployed a freshly built program — fixed in <code>1015a8a</code>
+  by pinning the API to the deployed ID. Both failing artifacts and the green artifact are retained.
+  <a href="https://github.com/goldennftplatform-svg/proclaim/blob/master/E2E-RESULT.md" target="_blank" rel="noopener">Full failing→passing evidence →</a></p>
 
   <h2>Prize targets</h2>
   <div class="table-wrap"><table>
@@ -82,7 +86,7 @@
 
   <h2>Hard blockers</h2>
   <ul class="checks">
-    <li>E2E lifecycle not green — no deploy until it is.</li>
+    <li>E2E lifecycle is green on a local sequencer. Nothing has been deployed to a public chain.</li>
     <li>Official testnet 0.4 is live at <code>https://testnet.lez.logos.co</code>, but nothing has been deployed there.</li>
     <li>No on-chain verifier, no Basecamp GUI, no third-party apps.</li>
     <li>Adoption needs real independent people over at least two months. Zero today; cannot be manufactured.</li>
@@ -96,6 +100,7 @@
     <li><a href="https://github.com/goldennftplatform-svg/proclaim-labs" target="_blank" rel="noopener">proclaim-labs</a> — all local workspaces and planning docs.</li>
     <li><a href="https://github.com/goldennftplatform-svg/proclaim-labs/tree/main/verification/clean-clone" target="_blank" rel="noopener">Fresh-clone verification</a> — raw commands and logs.</li>
     <li><a href="https://github.com/goldennftplatform-svg/proclaim" target="_blank" rel="noopener">proclaim</a> — registry code and CI.</li>
+    <li><a href="https://github.com/goldennftplatform-svg/proclaim/blob/master/E2E-RESULT.md" target="_blank" rel="noopener">Registry E2E: failing → passing</a> — two bugs, two fixes, one green run, with raw artifacts.</li>
   </ul>
 </main>
 
