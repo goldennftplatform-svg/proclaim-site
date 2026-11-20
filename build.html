@@ -31,7 +31,7 @@
   </div>
 
   <h1>Build status</h1>
-  <p class="lead">Last updated 2026-11-20 (CI run #10 failed at the guest program-ID assertion; 323 verified local tests). Numbers come from
+  <p class="lead">Last updated 2026-11-20 (CI rerun 44695605569 in flight; 326 tests independently re-verified from fresh clones). Numbers come from
   <a href="https://github.com/goldennftplatform-svg/proclaim-labs" target="_blank" rel="noopener">proclaim-labs</a>
   and the public CI runs — re-run the commands yourself rather than trusting this page.</p>
 
@@ -43,7 +43,7 @@
     <tbody>
       <tr><td><strong>LP-0023</strong> Program Registry</td><td>$2,000</td><td><span class="pill green">15 / 28 items</span></td><td>Product built and published; blocked on one CI run, then 7 adoption items.</td></tr>
       <tr><td><strong>LP-0021</strong> Wallet + Provider SDK</td><td>$20,000</td><td><span class="pill purple">0 / 32 criteria</span></td><td>Secure core + provider client built locally; the actual wallet is not.</td></tr>
-      <tr><td><strong>LP-0001</strong> NFT + Private Proofs</td><td>$5,000</td><td><span class="pill blue">0 / 46 criteria</span></td><td>Proof statement designed; the mock is explicitly not a zero-knowledge proof.</td></tr>
+      <tr><td><strong>LP-0001</strong> NFT + Private Proofs</td><td>$5,000</td><td><span class="pill blue">0 / 46 criteria</span></td><td>Real zkVM proof now built locally; no on-chain verifier, GUI, testnet or users.</td></tr>
     </tbody>
   </table>
 
@@ -53,26 +53,32 @@
     <tbody>
       <tr><td><code>lp0001-phase0</code></td><td>44 pass</td><td>Test fixture locking down the private-transfer statement. <strong>Mock backend — not ZK, no privacy claim.</strong></td></tr>
       <tr><td><code>lp0021-permissions</code></td><td>23 pass</td><td>Deny-by-default, individually revocable consent store. Zero dependencies.</td></tr>
-      <tr><td><code>lp0021-phase0</code></td><td>20 pass</td><td>Wallet secure core, encrypted keystore abstraction, approval state machine.</td></tr>
+      <tr><td><code>lp0021-phase0</code></td><td>23 pass</td><td>Wallet secure core, encrypted keystore abstraction, approval state machine.</td></tr>
       <tr><td><code>lp0021-phase1</code></td><td>51 pass</td><td>Local ledger replay, balances, approval-gated send/receive, restart reconstruction.</td></tr>
       <tr><td><code>lp0021-phase2-testimonials</code></td><td>50 pass</td><td>Local <code>testimonial_store</code> model. Not an on-chain program.</td></tr>
       <tr><td><code>lp0021-phase3</code></td><td>50 pass</td><td>Local token ledger, opaque private-account handles and effects summary. Opaque handles are not real privacy.</td></tr>
       <tr><td><code>lp0023-claim-binding</code></td><td>40 pass</td><td>Deployer-claim rejection demo. Toy signature model — not real cryptography.</td></tr>
     </tbody>
   </table>
-  <p class="muted"><strong>323 passing tests across eight local workspaces.</strong> Every workspace is clean under
+  <p class="muted"><strong>326 passing tests across eight local workspaces.</strong> Every workspace is clean under
   <code>cargo fmt --check</code> and <code>cargo clippy --all-targets -- -D warnings</code>, scanned for secrets,
   and dual-licensed <code>MIT AND Apache-2.0</code>. Re-run from the labs repo.</p>
 
   <h2>CI</h2>
-  <p>Public run #10 (<code>44678946709</code>) on commit <code>29da69c</code>:
+  <p>Earlier public run #10 (<code>44678946709</code>) on commit <code>29da69c</code>:
   Rust <span class="pill green">pass</span> JS <span class="pill green">pass</span>
   E2E with a real standalone sequencer <span class="pill amber">failed</span> at the
   guest program-ID assertion — the rebuilt image ID
   <code>5f80583a…</code> did not match the deployed <code>4df7d539…</code>.
   Earlier runs fixed the toolchain (<code>955c4c1</code>), a linker error and a missing
   <code>docker/</code> directory (<code>29da69c</code>). This mismatch is diagnosed, not
-  fixed; the E2E item stays unchecked.</p>
+     fixed; the E2E item stays unchecked.</p>
+   <p>Run <code>44691864048</code> on <code>ba01dd0</code>: Rust pass, JS pass, and the
+   guest program-ID assertion <strong>passed</strong> (clean-build ID <code>5f80583a…</code>).
+   The lifecycle then failed on a config bug: GitHub Actions coerced the unquoted
+   channel ID to <code>1.01010101010101E+62</code>. Fix <code>6c59b9f</code> quotes it and
+   rejects malformed values; rerun <code>44695605569</code> is in flight. Nothing is checked
+   until a run is green.</p>
 
   <h2>Hard blockers</h2>
   <ul>
@@ -83,8 +89,8 @@
 
   <h2>What's next</h2>
   <ol>
-    <li>Apply the path-portable program-ID fix documented in proclaim-verify to the CI workflow and get a green E2E run. No item is checked until the run is green.</li>
-    <li>Finish verifying the real RISC Zero proof workspace for LP-0001 (in progress locally). The existing mock is explicitly not a zero-knowledge proof.</li>
+    <li>Get a green E2E run on the default branch. No item is checked until the run is green.</li>
+    <li>Keep verifying the real RISC Zero proof workspace for LP-0001. It is a real zkVM receipt locally, but still 0/46 criteria.</li>
     <li>Keep publishing local scaffolding as reference material for other builders. No solution PR, no deploy, and no adoption figures unless they are real.</li>
   </ol>
 
@@ -95,7 +101,8 @@
     <li><a href="https://github.com/goldennftplatform-svg/proclaim-verify" target="_blank" rel="noopener">proclaim-verify</a> — a runnable CLI for checking guest program IDs and reproducible builds.</li>
     <li><a href="https://github.com/goldennftplatform-svg/proclaim-verify/blob/main/BATTLE-TEST.md" target="_blank" rel="noopener">Battle-test kit</a> — clone, run, and tell us what breaks.</li>
     <li><a href="https://github.com/goldennftplatform-svg/proclaim-labs/blob/main/docs/LP-0023-SELF-ASSESSMENT.md" target="_blank" rel="noopener">LP-0023 self-assessment</a> — every criterion, including what is missing and all zero adoption counters.</li>
-    <li><a href="https://github.com/goldennftplatform-svg/proclaim-module-starter" target="_blank" rel="noopener">proclaim-module-starter</a> — template for third-party integrations.</li>
+    <li><a href="https://github.com/goldennftplatform-svg/proclaim-module-starter" target="_blank" rel="noopener">proclaim-module-starter</a> — template for third-party integrations. Its <code>RESULT.md</code> states exactly what was checked.</li>
+    <li><a href="https://github.com/goldennftplatform-svg/proclaim-labs/tree/main/verification/clean-clone" target="_blank" rel="noopener">Fresh-clone verification</a> — raw commands and logs from three public repos, including the 323→326 correction.</li>
   </ul>
 </main>
 
