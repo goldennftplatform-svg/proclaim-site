@@ -4,15 +4,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>proclaim — three shipped tools for Logos builders</title>
-<meta name="description" content="Three installable, tested artifacts from one independent Logos builder: a guest-ID CLI, a wallet provider SDK with an approval gate, and a signed Basecamp module.">
+<title>proclaim — receipt-backed registry lifecycle and tools for Logos builders</title>
+<meta name="description" content="A green end-to-end registry lifecycle with retained receipts, plus three tagged tools: a guest-ID CLI, a wallet provider SDK with an approval gate, and a signed Basecamp module.">
 <link rel="canonical" href="https://goldennftplatform-svg.github.io/proclaim-site/brief.html">
 <base href="https://goldennftplatform-svg.github.io/proclaim-site/">
 <link rel="stylesheet" href="https://goldennftplatform-svg.github.io/proclaim-site/style.css">
 </head>
 <body>
 <header class="nav">
-  <a class="brand" href="https://goldennftplatform-svg.github.io/proclaim-site/brief.html">proclaim<span class="dot">.</span><span class="product">one builder · three shipped tools</span></a>
+  <a class="brand" href="https://goldennftplatform-svg.github.io/proclaim-site/brief.html">proclaim<span class="dot">.</span><span class="product">one builder · receipts first</span></a>
   <nav>
     <a href="https://goldennftplatform-svg.github.io/proclaim-site/brief.html" class="active">Brief</a>
     <a href="https://goldennftplatform-svg.github.io/proclaim-site/index.html">Goals &amp; status</a>
@@ -22,16 +22,31 @@
 
 <main class="wrap">
   <div class="notice">
-    <strong>One independent builder, new to the Logos stack.</strong> Everything here is a real,
-    tagged, reproducible artifact — not a roadmap. No prize submission, no deployment, no users.
+    <strong>One independent builder, new to the Logos stack.</strong> Everything here is a tagged
+    artifact or a recorded test run. No prize submission, no public deployment, no users.
   </div>
 
-  <h1>The problem I actually hit</h1>
-  <p class="lead">Build the same RISC Zero guest from a different directory and the image ID
-  <strong>changes</strong> — even though the source is identical. Cargo embeds path-derived symbols
-  in the ELF. An ID recorded on one machine is not a safe comparison value on another, and a wrong
-  ID means you verify or call the wrong program.</p>
+  <h1>Proof first: the registry lifecycle runs green</h1>
+  <p class="lead">The full registry path — deploy, init, register, update, verify, search and read —
+  passed against a real standalone sequencer. The run, commit and diagnostic artifact are public:</p>
+  <ul>
+    <li>Green CI run <a href="https://github.com/goldennftplatform-svg/proclaim/actions/runs/44792441611" target="_blank" rel="noopener">44792441611</a> at commit <code>1015a8a</code></li>
+    <li>Retained evidence <a href="https://github.com/goldennftplatform-svg/proclaim/actions/artifacts/14660455210" target="_blank" rel="noopener">artifact 14660455210</a></li>
+    <li>Program ID <code>0x5f80583a57b91af90f5e30d3420379ca4e4f7abeecb2c975b6063cfcd944d733</code></li>
+    <li>Index entry <code>7RoEv9jrMPcjiPfouYKcrxFdjiMB5Yc9hNXRBE3x6BPQ</code></li>
+    <li>Decoded state: <code>source_verified = true</code>, <code>evidence_cid = zDv*8iXZ6U</code>,
+    <code>verification_method = reproducible-rebuild:program-id</code></li>
+  </ul>
+  <p>Getting there found two real bugs — a search assertion that read the wrong output, and an API
+  pinned to a stale program ID. Both were fixed and the next run was green.
+  <a href="https://github.com/goldennftplatform-svg/proclaim/blob/main/E2E-RESULT.md" target="_blank" rel="noopener">Read the failing-to-passing record →</a></p>
 
+  <h2>Public deployment status</h2>
+  <p class="muted">In progress, not claimed. The live Logos testnet is serving a newer RPC shape than
+  the RC3 client libraries expect, so deploy attempts have not produced a program. No public-chain
+  address or transaction is being presented as evidence.</p>
+
+  <h2>Tools you can use today</h2>
   <div class="cards">
     <div class="card">
       <div class="ico">🔍</div>
@@ -46,7 +61,6 @@
     </div>
   </div>
 
-  <h2>What else is shipped</h2>
   <div class="cards">
     <div class="card">
       <div class="ico">🔐</div>
@@ -67,10 +81,10 @@
   </div>
 
   <h2>Honest scope</h2>
-  <p class="muted">These are local, mock-backed reference tools. Nothing is deployed, nothing is
-  on-chain, no one has adopted them, and no prize criterion is claimed. Signing keys are dev keys;
-  the module is not install-tested in Basecamp. I am sharing working code to get real review, not
-  asking for credit.</p>
+  <p class="muted">The green lifecycle ran on a fresh local test sequencer with
+  <code>RISC0_DEV_MODE=1</code>: it is a lifecycle/read test, not a real-proving result. The tools
+  above are local/review artifacts. No third party has adopted them, no prize criterion is claimed,
+  signing keys are dev keys, and the module is not install-tested in Basecamp.</p>
 
   <h2>The ask</h2>
   <p class="lead">If you build RISC Zero guests, run the battle-test kit and tell me where it
