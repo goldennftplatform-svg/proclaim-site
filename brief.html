@@ -90,6 +90,29 @@
   <p class="lead">If you build RISC Zero guests, run the battle-test kit and tell me where it
   breaks. Real bugs and nasty input cases are worth more than stars.</p>
 
+  <h2>Send a failure case or idea</h2>
+  <p class="muted">No form to fill in here. Each button opens a pre-filled GitHub issue in the right repo. You post it from your own GitHub account; nothing is submitted automatically. No keys or secrets, please.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="ico">🔍</div>
+      <h3>Guest image IDs</h3>
+      <p>Wrong ID reported, a false pass, or a canonical rebuild that doesn't stabilize the ID.</p>
+      <p><a class="button ghost" href="https://github.com/goldennftplatform-svg/proclaim-verify/issues/new?title=Review%20request%3A%20path-dependent%20guest%20ID%20report&body=%23%23%23%20What%20you%20tried%0A%0A%23%23%23%20ID%20%60proclaim-verify%60%20reported%0A%0A%23%23%23%20Expected%20ID%0A%0A%23%23%23%20Commands%20%2B%20output%0A%0AScope%3A%20local%20binary%20inspection%20only.%20No%20chain%2C%20no%20proofs%2C%20no%20submission.%20Do%20not%20paste%20keys%20or%20secrets." target="_blank" rel="noopener">Open verify issue →</a></p>
+    </div>
+    <div class="card">
+      <div class="ico">🔐</div>
+      <h3>Wallet approval gate</h3>
+      <p>A call sequence that signs without valid approval, or accepts replay or revoked consent.</p>
+      <p><a class="button ghost" href="https://github.com/goldennftplatform-svg/proclaim-wallet/issues/new?title=Review%20request%3A%20approval-gate%20counterexample&body=%23%23%23%20Call%20sequence%0A%0A%23%23%23%20What%20you%20expected%0A%0A%23%23%23%20What%20happened%0A%0AScope%3A%20mock%20adapters%20only.%20No%20chain%2C%20no%20keystore%2C%20no%20users.%20Do%20not%20paste%20keys%20or%20secrets." target="_blank" rel="noopener">Open wallet issue →</a></p>
+    </div>
+    <div class="card">
+      <div class="ico">🧩</div>
+      <h3>Registry source claim</h3>
+      <p>Where the verification method or evidence is still too weak to mean what it says.</p>
+      <p><a class="button ghost" href="https://github.com/goldennftplatform-svg/proclaim/issues/new?title=Review%20request%3A%20registry%20source-claim%20review&body=%23%23%23%20Which%20part%20of%20the%20claim%20is%20too%20weak%3F%0A%0A%23%23%23%20Evidence%20%2F%20repro%0A%0AScope%3A%20local%20standalone%20sequencer%2C%20dev%20mode.%20Not%20a%20public%20deployment%2C%20not%20a%20real-proving%20result.%20Do%20not%20paste%20keys%20or%20secrets." target="_blank" rel="noopener">Open registry issue →</a></p>
+    </div>
+  </div>
+
   <div class="cta">
     <a class="button" href="https://github.com/goldennftplatform-svg/proclaim-verify/blob/main/BATTLE-TEST.md" target="_blank" rel="noopener">Try to break proclaim-verify</a>
     <a class="button ghost" href="https://goldennftplatform-svg.github.io/proclaim-site/index.html">Where I actually am →</a>
