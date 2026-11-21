@@ -39,7 +39,7 @@
   </ul>
   <p>Getting there found two real bugs — a search assertion that read the wrong output, and an API
   pinned to a stale program ID. Both were fixed and the next run was green.
-  <a href="https://github.com/goldennftplatform-svg/proclaim/blob/main/E2E-RESULT.md" target="_blank" rel="noopener">Read the failing-to-passing record →</a></p>
+  <a href="https://github.com/goldennftplatform-svg/proclaim/blob/master/E2E-RESULT.md" target="_blank" rel="noopener">Read the failing-to-passing record →</a></p>
 
   <h2>Public deployment status</h2>
   <p class="muted">In progress, not claimed. The live Logos testnet is serving a newer RPC shape than
@@ -80,9 +80,12 @@
       <code>lgx</code>, and verified: valid Ed25519 <code>did:jwk</code> signature, linux-amd64
       variant, published as a release asset. It also installed successfully in a real
       Basecamp 0.4.0-rc.2 AppImage using the Package Manager UI — Basecamp reports
-      <code>Status: Installed</code>, version 0.1.0.</p>
+      <code>Status: Installed</code>, version 0.1.0. RC2 has no UI path to load or launch a
+      locally installed UI-only LGX package, so a clean restart loads only the bundled package
+      manager UI.</p>
       <p><a href="https://github.com/goldennftplatform-svg/proclaim/releases/tag/v0.2.0-lgx" target="_blank" rel="noopener">Release →</a> ·
-      <a href="https://github.com/goldennftplatform-svg/proclaim/blob/main/BASECAMP-INSTALL-RESULT.md" target="_blank" rel="noopener">Install evidence →</a></p>
+      <a href="https://github.com/goldennftplatform-svg/proclaim/blob/master/BASECAMP-INSTALL-RESULT.md" target="_blank" rel="noopener">Install evidence →</a> ·
+      <a href="https://github.com/goldennftplatform-svg/proclaim/blob/master/BASECAMP-LOAD-RESULT.md" target="_blank" rel="noopener">Load blocker →</a></p>
     </div>
   </div>
 
@@ -90,9 +93,11 @@
   <p class="muted">The green lifecycle ran on a fresh local test sequencer with
   <code>RISC0_DEV_MODE=1</code>: it is a lifecycle/read test, not a real-proving result. The tools
   above are local/review artifacts. No third party has adopted them, no prize criterion is claimed,
-  signing keys are dev keys, the module's signer is not in Basecamp's trusted keyring, and
-  load/launch was not verified. The install was a developer test on one Linux machine, not
-  third-party adoption. The wallet proxy path needs a caller-supplied SOCKS5 proxy; no
+  signing keys are dev keys, the module's signer is not in Basecamp's trusted keyring. Install
+  is verified, but RC2 has no Load/Launch action for a local UI-only LGX package and no local
+  package launcher in Applications; no successful Basecamp launch is claimed. Both install and
+  load checks were developer tests on one Linux machine, not third-party adoption. The wallet
+  proxy path needs a caller-supplied SOCKS5 proxy; no
   Tor/I2P/mixnet deployment exists and the proxy exit still sees traffic.</p>
 
   <h2>The ask</h2>
