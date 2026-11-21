@@ -64,11 +64,15 @@
   <div class="cards">
     <div class="card">
       <div class="ico">🔐</div>
-      <h3>proclaim-wallet v1.0.0</h3>
-      <p>LP-0021 reference Wallet Provider SDK + CLI, also published as an npm package. The
+      <h3>proclaim-wallet</h3>
+      <p>LP-0021 reference Wallet Provider SDK + CLI. The
       approval gate is the point: <strong>no signing without explicit authorize()</strong>.
-      23/23 tests, 8/8 attack cases held, green CI. Mock adapters — no chain, no keystore.</p>
-      <p><a href="https://github.com/goldennftplatform-svg/proclaim-wallet/releases/tag/v1.0.0" target="_blank" rel="noopener">Release →</a></p>
+      35/35 tests on a fresh clone, 8/8 attack cases held, green CI. Newer source on
+      <code>main</code> adds a privacy-first transport: no direct sockets, default deny,
+      opt-in SOCKS5 proxy-only egress with domain-name CONNECT and pinned TLS. Mock
+      adapters — no chain, no keystore.</p>
+      <p><a href="https://github.com/goldennftplatform-svg/proclaim-wallet/releases/tag/v1.0.0" target="_blank" rel="noopener">v1.0.0 release →</a> ·
+      <a href="https://github.com/goldennftplatform-svg/proclaim-wallet/blob/main/PRIVACY-TRANSPORT.md" target="_blank" rel="noopener">Privacy evidence →</a></p>
     </div>
     <div class="card">
       <div class="ico">🧩</div>
@@ -89,7 +93,8 @@
   above are local/review artifacts. No third party has adopted them, no prize criterion is claimed,
   signing keys are dev keys, the module's signer is not in Basecamp's trusted keyring, and
   load/launch was not verified. The install was a developer test on one Linux machine, not
-  third-party adoption.</p>
+  third-party adoption. The wallet proxy path needs a caller-supplied SOCKS5 proxy; no
+  Tor/I2P/mixnet deployment exists and the proxy exit still sees traffic.</p>
 
   <h2>The ask</h2>
   <p class="lead">If you build RISC Zero guests, run the battle-test kit and tell me where it
