@@ -78,7 +78,7 @@
     <div class="card">
       <div class="ico">🔗</div>
       <h3>Registry code</h3>
-      <p>The proclaim registry program, CLI, HTTP API and JS client exist locally. The E2E lifecycle against a real standalone sequencer now passes end to end, including the HTTP API. The signed Basecamp module installed in an isolated local AppImage (<a href="https://github.com/goldennftplatform-svg/proclaim/blob/master/BASECAMP-INSTALL-RESULT.md" target="_blank" rel="noopener">install evidence</a>), but RC2 has no UI path to load or launch it (<a href="https://github.com/goldennftplatform-svg/proclaim/blob/master/BASECAMP-LOAD-RESULT.md" target="_blank" rel="noopener">load evidence</a>). Nothing has been deployed to a public chain.</p>
+      <p>The proclaim registry program, CLI, HTTP API and JS client exist locally. The E2E lifecycle against a real standalone sequencer now passes end to end, including the HTTP API. The signed Basecamp module installed in an isolated local AppImage (<a href="https://github.com/goldennftplatform-svg/proclaim/blob/master/BASECAMP-INSTALL-RESULT.md" target="_blank" rel="noopener">install evidence</a>), but RC2 has no UI path to load or launch it (<a href="https://github.com/goldennftplatform-svg/proclaim/blob/master/BASECAMP-LOAD-RESULT.md" target="_blank" rel="noopener">load evidence</a>). Public deploy attempts are blocked by LEZ version skew (<a href="https://github.com/goldennftplatform-svg/proclaim/blob/master/DEPLOY-RESULT.md" target="_blank" rel="noopener">deploy result</a>). Nothing has been deployed to a public chain.</p>
     </div>
     <div class="card">
       <div class="ico">🔐</div>
@@ -90,7 +90,7 @@
   <h2>What's blocking</h2>
   <ul class="checks">
     <li>E2E CI is green on a local sequencer (run <code>44792441611</code>). This is a dev-mode lifecycle test, not a public-chain deployment or a real-proving result.</li>
-    <li>No on-chain verifier or deployment. The official zone is live, but I haven't put anything on it. A deploy attempt is blocked by client/server version skew: the live sequencer uses the current LEZ schema, while our tested guest and CLI target LEZ v0.4.0-rc3.</li>
+    <li>No on-chain verifier or deployment. The official zone is live, but I haven't put anything on it. A deploy attempt reached R0BF segment upload, then stopped on client/server version skew: the live zone uses the current LEZ program model, while our tested guest and CLI target LEZ v0.4.0-rc3. <a href="https://github.com/goldennftplatform-svg/proclaim/blob/master/DEPLOY-RESULT.md" target="_blank" rel="noopener">Deploy result →</a></li>
     <li>The registry UI module installed locally in an isolated Basecamp 0.4.0-rc.2 session, but its signing key is untrusted. RC2 has no Load/Launch action for a local UI-only LGX package: after restart only the bundled package manager UI loaded. There is still no Basecamp GUI for private proofs and no on-chain program.</li>
     <li>The wallet's proxy path needs a SOCKS5/Tor proxy supplied by the caller. No Tor/I2P/mixnet deployment exists, and the proxy exit still sees destination traffic — this is IP-hiding, not anonymity.</li>
     <li>Every λPrize still needs real independent people and at least two months of sustained activity. That cannot be manufactured by tooling.</li>
