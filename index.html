@@ -44,11 +44,11 @@
   <h2>Where we are right now</h2>
   <div class="stats">
     <div class="stat"><b>2</b><span>released tools</span></div>
-    <div class="stat"><b>349</b><span>local passing tests</span></div>
+    <div class="stat"><b>361</b><span>local passing tests</span></div>
     <div class="stat"><b>0</b><span>on-chain deployments</span></div>
     <div class="stat"><b>0</b><span>users / testimonials</span></div>
   </div>
-  <p class="muted">The 349 tests are local and self-verified, including from fresh clones. They are
+  <p class="muted">The 361 tests are local and self-verified, including from fresh clones. They are
   <strong>not</strong> prize credit, third-party review, or evidence of a working public deployment.</p>
 
   <h2>What's actually shipped</h2>
@@ -61,9 +61,10 @@
     </div>
     <div class="card">
       <div class="ico">🔐</div>
-      <h3>proclaim-wallet v1.0.0</h3>
-      <p>LP-0021 reference Wallet Provider SDK + CLI. The approval gate is enforced and tested: 23/23 tests pass, 8/8 attack cases held, green CI on the default branch. Mock adapters only — no chain, no keystore, no users.</p>
-      <p><a href="https://github.com/goldennftplatform-svg/proclaim-wallet/releases/tag/v1.0.0" target="_blank" rel="noopener">See the release →</a></p>
+      <h3>proclaim-wallet</h3>
+      <p>LP-0021 reference Wallet Provider SDK + CLI. The approval gate is enforced: no signing without explicit <code>authorize()</code>. The tagged v1.0.0 release is on GitHub. Newer source on <code>main</code> adds a privacy-first transport seam: the wallet opens no direct sockets, the default transport denies all network access, and opt-in egress goes through a SOCKS5 proxy with domain-name CONNECT and pinned TLS. 35/35 tests on a fresh clone, 8/8 attack cases held. No Tor deployment, no chain, no keystore, no users.</p>
+      <p><a href="https://github.com/goldennftplatform-svg/proclaim-wallet/releases/tag/v1.0.0" target="_blank" rel="noopener">v1.0.0 release →</a> ·
+      <a href="https://github.com/goldennftplatform-svg/proclaim-wallet/blob/main/PRIVACY-TRANSPORT.md" target="_blank" rel="noopener">Privacy transport evidence →</a></p>
     </div>
   </div>
 
@@ -72,7 +73,7 @@
     <div class="card">
       <div class="ico">🧪</div>
       <h3>Local workspaces</h3>
-      <p>Eight local Rust workspaces plus the wallet SDK, 349 passing tests: wallet secure core, consent store, local ledger replay, testimonial model, token ledger, provider protocol, claim-binding demo, a proof statement fixture and the wallet provider SDK. All in-memory or local — no on-chain program.</p>
+      <p>Eight local Rust workspaces plus the wallet SDK, 361 passing tests: wallet secure core, consent store, local ledger replay, testimonial model, token ledger, provider protocol, claim-binding demo, a proof statement fixture and the wallet provider SDK. All in-memory or local — no on-chain program.</p>
     </div>
     <div class="card">
       <div class="ico">🔗</div>
@@ -91,6 +92,7 @@
     <li>E2E CI is green on a local sequencer (run <code>44792441611</code>). This is a dev-mode lifecycle test, not a public-chain deployment or a real-proving result.</li>
     <li>No on-chain verifier or deployment. The official zone is live, but I haven't put anything on it.</li>
     <li>The registry UI module installed locally in an isolated Basecamp 0.4.0-rc.2 session, but its signing key is untrusted and load/launch is not verified. There is still no Basecamp GUI for private proofs and no on-chain program.</li>
+    <li>The wallet's proxy path needs a SOCKS5/Tor proxy supplied by the caller. No Tor/I2P/mixnet deployment exists, and the proxy exit still sees destination traffic — this is IP-hiding, not anonymity.</li>
     <li>Every λPrize still needs real independent people and at least two months of sustained activity. That cannot be manufactured by tooling.</li>
   </ul>
 
